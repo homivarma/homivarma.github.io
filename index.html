@@ -20,18 +20,30 @@ function onLoad(){
     document.forms["myForm"]["time"].value = y
 }
 
+function ValidatePhoneNumber(phoneNumber) {
+  var regExp = /^(\([6-9]{3}\)[0-9]{9}/;
+  var phone = phoneNumber.match(regExp);
+  if (phone) {
+    return true;
+  }
+  return false;
+}
+
 function myFunction() {
   let x = document.forms["myForm"]["date"].value;
   let y = document.forms["myForm"]["time"].value;
   temp = x+" "+y;
   var ToDate = new Date();
-    if (new Date(temp).getTime() <= ToDate.getTime()) {
-          alert("The Date must be Bigger or Equal to today date");
-          return;
+  if (new Date(temp).getTime() <= ToDate.getTime()) {
+          alert("The time must be valid");
+          return
      }
-    else{
-    	alert("The Date is Bigger or Equal to today date");
-    }
+  let num = document.forms["myForm"]["number"].value;
+     if (ValidatePhoneNumber(num) == false){
+        alert("The phone number must be valid");
+          return
+     }
+    document.forms["myForm"].action = "https://script.google.com/a/macros/virohan.org/s/AKfycbxovi173ttnyjSEMk-7-Uxj7-SFcBWSwW_qDI7VRXO3DmhrZOmdT02-34YiucVX8qll/exec"
     return;
 }
 </script>
@@ -232,7 +244,6 @@ function myFunction() {
   method="POST"
  name="myForm"
  onsubmit="myFunction()"
-action="https://script.google.com/a/macros/virohan.org/s/AKfycbxovi173ttnyjSEMk-7-Uxj7-SFcBWSwW_qDI7VRXO3DmhrZOmdT02-34YiucVX8qll/exec"
 >
         <div class="item">
           <p>Name</p>
