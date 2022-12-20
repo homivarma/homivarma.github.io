@@ -15,7 +15,7 @@ function onLoad(){
 	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
     
     document.forms["myForm"]["date"].value = today
-    
+    document.forms["myForm"]["date"].min = today
     let y = now.toString().substring(16,21);
     document.forms["myForm"]["time"].value = y
 }
