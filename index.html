@@ -14,17 +14,16 @@ function onLoad(){
     
 	var day = ("0" + now.getDate()).slice(-2);
 	var month = ("0" + (now.getMonth() + 1)).slice(-2);
-
-	var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
     
+    var today = (day)+"-"+(month)+"-"+now.getFullYear() ;
     document.forms["myForm"]["date"].value = today
-    document.forms["myForm"]["date"].min = today
+    //document.forms["myForm"]["date"].min = today
     let y = now.toString().substring(16,21);
     document.forms["myForm"]["time"].value = y
 }
 
 function ValidatePhoneNumber(phoneNumber) {
-  var regExp = /^(\([6-9]{3}\)[0-9]{9}/;
+  var regExp = /^[6-9]{1}[0-9]{9}/;
   var phone = phoneNumber.match(regExp);
   if (phone) {
     return true;
