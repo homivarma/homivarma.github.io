@@ -11,15 +11,16 @@
 
 function onLoad(){
 	var now = new Date();
-    
+  let y = now.toString().substring(16,21);
+  document.forms["myForm"]["time"].value = y
+
 	var day = ("0" + now.getDate()).slice(-2);
 	var month = ("0" + (now.getMonth() + 1)).slice(-2);
 
-    var today = (day)+"-"+(month)+"-"+now.getFullYear();
-    document.forms["myForm"]["date"].placeholder = today
-    document.forms["myForm"]["date"].min = today
-    let y = now.toString().substring(16,21);
-    document.forms["myForm"]["time"].value = y
+  var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+    
+  document.forms["myForm"]["date"].value = today
+  document.forms["myForm"]["date"].min = today
 }
 
 function ValidatePhoneNumber(phoneNumber) {
@@ -51,8 +52,6 @@ function validateInput(){
 
 </script>
   </head>
-  
-  
 <body onload="onLoad()">
   <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
