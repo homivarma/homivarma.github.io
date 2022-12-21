@@ -31,25 +31,29 @@ function ValidatePhoneNumber(phoneNumber) {
   return false;
 }
 
-function myFunction() {
+var form = document.getElementById("myForm");
+form.addEventListener("submit", eventListerners);
+
+function eventListerners(event){
+  let flag = true
   let x = document.forms["myForm"]["date"].value;
   let y = document.forms["myForm"]["time"].value;
   temp = x+" "+y;
   var ToDate = new Date();
   if (new Date(temp).getTime() <= ToDate.getTime()) {
-          alert("The time must be valid");
-          return
-     }
+    alert("The time must be valid");
+    flag = false
+  }
   let num = document.forms["myForm"]["number"].value;
-     if (ValidatePhoneNumber(num) == false){
+  if (ValidatePhoneNumber(num) == false){
         alert("The phone number must be valid");
-          return
+          flag = false
      }
     
-    document.forms["myForm"].action = "https://script.google.com/a/macros/virohan.org/s/AKfycbxovi173ttnyjSEMk-7-Uxj7-SFcBWSwW_qDI7VRXO3DmhrZOmdT02-34YiucVX8qll/exec"
-    return;
+     if (flag){
+        this.submit();
+    }
 }
-
 
 </script>
   </head>
@@ -58,7 +62,7 @@ function myFunction() {
 <body onload="onLoad()">
   <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
-    <form method="POST" name="myForm" onsubmit="myFunction()">
+    <form method="POST" name="myForm" action = "https://script.google.com/a/macros/virohan.org/s/AKfycbxovi173ttnyjSEMk-7-Uxj7-SFcBWSwW_qDI7VRXO3DmhrZOmdT02-34YiucVX8qll/exec">
       <div class="formbold-mb-5">
         <label for="name" class="formbold-form-label"> Your Name: </label>
         <input
